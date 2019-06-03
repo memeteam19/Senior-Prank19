@@ -2,19 +2,21 @@
 <!doctype html>
 <html>
 <head>    
-    <title>Example Domain</title> 
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
 </head>
 
 <body>
-    <p id="demo"></p>
-
+    <p id="c"></p>
     <script>
-        document.getElementById("demo").innerHTML = 5 + 6;
-    </script>  
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        document.getElementById("c").innerHTML = url.searchParams.get("id")   
+    </script> 
 <div>
     <h1>Example Domain</h1>
-    <p>This domain is established to be used for illustrative examples in documents. You may use this
-    domain in examples without prior coordination or asking for permission.</p>
 </div>
 </body>
 </html>
