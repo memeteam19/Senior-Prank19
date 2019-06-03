@@ -1,3 +1,3 @@
 import qrcode
-img = qrcode.make('#put uRL here')
-img.save("snrprankcode.png")s
+codes = qrcode.make('memeteam19.github.io/20190603')
+codes.save("code.png")
