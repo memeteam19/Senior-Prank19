@@ -105,9 +105,11 @@
         
                     return obj;
                 }
-            var results = getAllUrlParams().id;
+            var document.getElementById("id").innerHTML = getAllUrlParams().id;
+            var document.getElementById("testing").innerHTML = getAllUrlParams('http://test.com/?a=abc').a;
         </script>
-    <pre id="results">{}</pre>
+    <p id="id">{}</p>
+    <p id="testing"></p>
 <div>
     <h1>Example Domain</h1>
     <p>This domain is established to be used for illustrative examples in documents. You may use this
