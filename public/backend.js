@@ -13,7 +13,6 @@ var store = firebase.firestore().collection("data").doc("cards");
 var url_string = window.location.href;
 var url = new URL(url_string);
 var id = url.searchParams.get("id");
-console.log(id);
 
 // getting cardsLeft from database
 store.get().then(function(doc) {
@@ -21,9 +20,7 @@ store.get().then(function(doc) {
         console.log("Document data:", doc.data());
         var holder = doc.data()['cardsLeft'];
         if (url.searchParams.get("id") == 20190604) {
-            console.log(holder);
             holder = holder - 1;
-            console.log(holder);
             store.update({cardsLeft: holder});
         }
         document.getElementById("cl").innerHTML = holder;
