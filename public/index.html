@@ -19,41 +19,7 @@
     <h1>So you found a card...</h1>
     Cards left on campus: 
     <p id="cl"></p>
-
-
-
-    <script>
-        // Set the configuration for your app
-        var firebaseConfig = {
-            apiKey: "AIzaSyCtFjJt-cITgKBmX9yFTJPMbcxZtZsU-ks",
-            authDomain: "senior-prank19.firebaseapp.com",
-            projectId: 'senior-prank19'
-        };
-        firebase.initializeApp(firebaseConfig);
-
-
-        var url_string = window.location.href;
-        var url = new URL(url_string);
-        var id = url.searchParams.get("id");
-        console.log(id);
-
-        var store = firebase.firestore().collection("data").doc("cards");
-
-        store.get().then(function(doc) {
-            if (doc.exists) {
-                console.log("Document data:", doc.data());
-                document.getElementById("cl").innerHTML = doc.data()['cardsLeft'];
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
-        
-        // if (url.searchParams.get("id") == 20190603) {
-        //     cardsLeft = cardsLeft - 1;
-        // }
-    </script>
+    
+    <script src="backend.js"></script>
 </body>
 </html>
