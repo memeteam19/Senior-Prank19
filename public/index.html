@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+</head>
+<body>
+    <!-- update the version number as needed -->
+    <script src="/__/firebase/6.1.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/6.1.0/firebase-firestore.js"></script>
+
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+    
+    <h1>So you found a card...</h1>
+    Cards left on campus: 
+    <p id="cl"></p>
+
+
+
+    <script>
+        // Set the configuration for your app
+        var firebaseConfig = {
+            apiKey: "AIzaSyCtFjJt-cITgKBmX9yFTJPMbcxZtZsU-ks",
+            authDomain: "senior-prank19.firebaseapp.com",
+            projectId: 'senior-prank19'
+        };
+        firebase.initializeApp(firebaseConfig);
+
+
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var id = url.searchParams.get("id");
+        console.log(id);
+
+        var store = firebase.firestore().collection("data").doc("cards");
+
+        store.get().then(function(doc) {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+                document.getElementById("cl").innerHTML = doc.data()['cardsLeft'];
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+        
+        // if (url.searchParams.get("id") == 20190603) {
+        //     cardsLeft = cardsLeft - 1;
+        // }
+    </script>
+</body>
+</html>
