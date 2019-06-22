@@ -19,9 +19,15 @@ store.get().then(function(doc) {
     if (doc.exists) {
         console.log("Document data:", doc.data());
         var holder = doc.data()['cardsLeft'];
+        var ts = doc.data()['timeOfUpdate'];
+        var tsCurrent = Date();
         if (url.searchParams.get("id") == 20190604) {
-            holder = holder - 1;
-            store.update({cardsLeft: holder});
+            // if current time is more than 7 seconds greater than last timestamp
+            if (tsCurrent.getTime() > ts.toDate().getTime() + 7000) {
+                holder = holder - 1;
+                store.update({cardsLeft: holder});
+                store.update({timeOfUpdate: fromDate(tsCurrent)});
+            }
         }
         document.getElementById("cl").innerHTML = holder;
     } else {
